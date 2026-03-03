@@ -4,14 +4,8 @@ import pytest
 import cge
 
 
-def test_jarbin_toolkit_attributes(
-    ) -> None:
-    assert hasattr(cge, "Action")
-    assert hasattr(cge, "Config")
-    assert hasattr(cge, "Console")
-    assert hasattr(cge, "Error")
-    assert hasattr(cge, "Log")
-    assert hasattr(cge, "Time")
+def test_attributes(
+        ) -> None:
     assert hasattr(cge, "get_info")
     assert hasattr(cge, "benchmark")
     assert hasattr(cge, "fail")
@@ -19,26 +13,36 @@ def test_jarbin_toolkit_attributes(
     assert hasattr(cge, "IS_TTY")
     assert hasattr(cge, "OS")
     assert hasattr(cge, "TERM")
-    assert hasattr(cge, "sleep")
-    assert hasattr(cge, "pause")
-    assert hasattr(cge, "print")
-    assert hasattr(cge, "input")
-    assert hasattr(cge, "flush")
-    assert hasattr(cge, "stdin")
-    assert hasattr(cge, "stdout")
-    assert hasattr(cge, "stderr")
-    assert hasattr(cge, "critic")
-    assert hasattr(cge, "error")
-    assert hasattr(cge, "warning")
-    assert hasattr(cge, "valid")
-    assert hasattr(cge, "debug")
-    assert hasattr(cge, "info")
-    assert hasattr(cge, "bold")
-    assert hasattr(cge, "underline")
-    assert hasattr(cge, "color")
-    assert hasattr(cge, "up")
-    assert hasattr(cge, "down")
-    assert hasattr(cge, "left")
-    assert hasattr(cge, "right")
-    assert hasattr(cge, "clear")
-    assert hasattr(cge, "clear_line")
+
+
+def test_get_info(
+        ) -> None:
+
+    assert isinstance(cge.get_info(), dict)
+
+
+def test_benchmark(
+        ) -> None:
+
+    result, elapsed = cge.benchmark(lambda x: x + 1, 10)
+    assert result == 11
+    assert round(elapsed, 0) == 0
+
+
+def test_fail(
+        ) -> None:
+
+    try:
+        cge.fail("a fail")
+
+    except cge.Error as e:
+        assert "a fail" in str(e)
+
+    else:
+        assert False
+
+def test_text(
+        ) -> None:
+
+    text = cge.text("this ", "is ", "a ", "text")
+    assert str(text) == "this is a text"
