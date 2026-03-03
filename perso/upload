@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cat ~/.pypric
+echo ""
+read -p "Press enter to continue"
+python3 -m build
+twine upload dist/*
+mv dist/* dist_done/

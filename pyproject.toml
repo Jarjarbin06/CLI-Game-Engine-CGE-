@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel", "setuptools_scm[toml]>=6.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cge"
+version = "1.0"
+description = "CLI Game Engine"
+authors = [
+    { name = "Nathan Jarjarbin", email = "nathan.amaraggi@epitech.eu" }
+]
+readme = "README.md"
+requires-python = ">=3.11"
+license = "GPL-3.0-or-later"
+
+dependencies = [
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Terminals",
+    "Topic :: Utilities"
+]
+
+[project.urls]
+Homepage = "https://jarjarbin06.github.io/CLI-Game-Engine-CGE-/"
+Repository = "https://github.com/Jarjarbin06/CLI-Game-Engine-CGE-/"
+Issues = "https://github.com/Jarjarbin06/CLI-Game-Engine-CGE-/issues/"
+
+[tool.setuptools_scm]
+version_scheme = "guess-next-dev"
+local_scheme = "dirty-tag"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["cge*"]
+
+[tool.setuptools.package-data]
+"cge" = ["config.ini"]
