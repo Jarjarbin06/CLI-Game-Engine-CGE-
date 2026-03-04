@@ -1,7 +1,6 @@
 #############################
 ###                       ###
 ###          CGE          ###
-###  ----__init__.py----  ###
 ###                       ###
 ###=======================###
 ### by JARJARBIN's STUDIO ###
@@ -12,41 +11,24 @@
 import platform
 from os import environ
 from sys import stdout
-from typing import Callable, Any
 from jarbin_toolkit_console.Text import Text
 from jarbin_toolkit_time import StopWatch
 from jarbin_toolkit_error import Error
 
 
-## Base Functions ##
-def __getattr__(
-        name: str
-        ) -> dict[str, str]:
-    """
-        Get the attribute corresponding to "name"
-        Raise an AttributeError if the attribute is not found
+## CGE Imports ##
+from cge.Sprite.sprite import Sprite
+import cge.Data.data_classes as Data
 
-        Parameters:
-            name (str): name of the attribute
 
-        Returns:
-            dict[str, str]: attribute
-    """
-
+## API ##
+def __getattr__(name):
     if name in __all__:
         return globals()[name]
     raise AttributeError(name)
 
 
-def get_info(
-        ) -> dict[str, str]:
-    """
-        Get info about the Jarbin toolkit
-
-        Returns:
-            dict[str, str | dict[str, str]]: info
-    """
-
+def get_info() -> dict[str, str]:
     return {
         "name": "CGE",
         "description": __description__,
@@ -58,67 +40,43 @@ def get_info(
     }
 
 
-def benchmark(
-        function: Callable,
-        *args: Any,
-        **kwargs: Any
-        ) -> tuple[Any, float]:
-    """
-    Benchmark the function
-
-    Parameters:
-        function (Callable): function to benchmark
-        *args (list[Any]): arguments
-        **kwargs (dict[str, Any]): keyword arguments
-
-    Returns:
-        tuple[Any, float]: benchmark result and elapsed time
-    """
+def benchmark(function, *args, **kwargs):
     sw = StopWatch(True)
     result = function(*args, **kwargs)
     return result, sw.elapsed()
 
 
-def fail(
-        message: str = "an error occurred"
-        ) -> None:
-    """
-        Raise an Error Exception with a message
-
-        Parameters:
-            message (str, optional): message
-    """
+def fail(message="an error occurred"):
     raise Error(message)
 
 
-def text(
-        *args: Any
-        ) -> Text:
+def text(*args):
     return Text(list(args))
 
 
 ## Base Variables ##
-IS_TTY: bool = stdout.isatty()
-OS: str = platform.system()
-TERM: str = environ.get("TERM", "")
-
+IS_TTY = stdout.isatty()
+OS = platform.system()
+TERM = environ.get("TERM", "")
 
 ## API Shortcuts ##
-#...
+# ...
 
 
 ## Special Variables ##
-__all__: list[str] = [
+__all__ = [
     'get_info',
     'benchmark',
     'fail',
     'text',
     'IS_TTY',
     'OS',
-    'TERM'
+    'TERM',
+    'Data',
+    'Sprite'
 ]
-__author__: str = 'Nathan Jarjarbin'
-__email__: str = 'nathan.amaraggi@epitech.eu'
-__description__: str = "CLI Game Engine"
-__version__: str = "0.0.1.0"
-__license__: str = "GPL"
+__author__ = 'Nathan Jarjarbin'
+__email__ = 'nathan.amaraggi@epitech.eu'
+__description__ = "CLI Game Engine"
+__version__ = "0.0.1.0"
+__license__ = "GPL"
