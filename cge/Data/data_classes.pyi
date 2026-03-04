@@ -9,7 +9,6 @@
 #############################
 
 
-## API STUB ##
 class Vec2:
     """
     2D integer vector.

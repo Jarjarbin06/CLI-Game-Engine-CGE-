@@ -7,11 +7,9 @@
 #############################
 
 
-## Imports ##
 from dataclasses import dataclass
 
 
-## API ##
 @dataclass
 class Vec2:
     x: int

@@ -7,13 +7,11 @@
 #############################
 
 
-## Imports ##
 from types import NoneType
 from jarbin_toolkit_console import Animation
 from cge.Data.data_classes import *
 
 
-## API ##
 class Sprite:
 
     def __init__(self) -> None:
@@ -46,23 +44,23 @@ class Sprite:
         self.parent = None
 
     def setColor(self, color_fg=None, color_bg=None) -> None:
-        assert isinstance(color_fg, Color) or isinstance(color_fg, tuple) or isinstance(color_fg, NoneType)
-        assert isinstance(color_bg, Color) or isinstance(color_bg, tuple) or isinstance(color_bg, NoneType)
+        assert isinstance(color_fg, Color) or isinstance(color_fg, tuple) or isinstance(color_fg, NoneType), "invalid type for color_fg"
+        assert isinstance(color_bg, Color) or isinstance(color_bg, tuple) or isinstance(color_bg, NoneType), "invalid type for color_bg"
 
         if isinstance(color_fg, tuple):
-            assert len(color_fg) == 3 and 0 <= color_fg[0] <= 255 and 0 <= color_fg[1] <= 255 and 0 <= color_fg[
-                2] <= 255
+            assert len(color_fg) == 3, "invalid length of color_fg"
             color_fg = Color(*color_fg)
 
         if isinstance(color_bg, tuple):
-            assert len(color_bg) == 3 and 0 <= color_bg[0] <= 255 and 0 <= color_bg[1] <= 255 and 0 <= color_bg[
-                2] <= 255
+            assert len(color_bg) == 3, "invalid length of color_bg"
             color_bg = Color(*color_bg)
 
         if not isinstance(color_fg, NoneType):
+            assert 0 <= color_fg.r <= 255 and 0 <= color_fg.g <= 255 and 0 <= color_fg.b <= 255, "invalid value of RGB for color_fg"
             self.color_fg = color_fg
             self.is_dirty = True
 
         if not isinstance(color_bg, NoneType):
+            assert 0 <= color_bg.r <= 255 and 0 <= color_bg.g <= 255 and 0 <= color_bg.b <= 255, "invalid value of RGB for color_bg"
             self.color_bg = color_bg
             self.is_dirty = True

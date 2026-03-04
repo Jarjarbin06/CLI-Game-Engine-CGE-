@@ -9,12 +9,10 @@
 #############################
 
 
-## Imports ##
 from typing import Callable, Any
 from jarbin_toolkit_console.Text import Text
 
 
-## API stub ##
 def __getattr__(name: str) -> Any:
     """
     Dynamically retrieve a public attribute from the module namespace.
@@ -104,7 +102,6 @@ def text(*args: Any) -> Text:
     ...
 
 
-## Base Variables ##
 IS_TTY: bool
 """
 Indicates whether the current stdout is attached to a TTY.
@@ -121,11 +118,6 @@ Terminal type extracted from environment variables.
 """
 
 
-## API Shortcuts ##
-#...
-
-
-## Special Variables ##
 __all__: list[str]
 """
 Public API symbols exposed by the package.

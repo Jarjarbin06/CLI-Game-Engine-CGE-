@@ -9,13 +9,11 @@
 #############################
 
 
-## Imports ##
 from typing import Any
 from jarbin_toolkit_console import Animation
-from cge.dataclasses import Vec2, Color, Rect
+from cge.Data.data_classes import Vec2, Color, Rect
 
 
-## API stub ##
 class Sprite:
     """
     Renderable ASCII / ANSI sprite entity.

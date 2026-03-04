@@ -7,25 +7,14 @@
 #############################
 
 
-## Imports ##
 import platform
 from os import environ
 from sys import stdout
 from jarbin_toolkit_console.Text import Text
 from jarbin_toolkit_time import StopWatch
 from jarbin_toolkit_error import Error
-
-
-## CGE Imports ##
 from cge.Sprite.sprite import Sprite
 import cge.Data.data_classes as Data
-
-
-## API ##
-def __getattr__(name):
-    if name in __all__:
-        return globals()[name]
-    raise AttributeError(name)
 
 
 def get_info() -> dict[str, str]:
@@ -54,16 +43,11 @@ def text(*args):
     return Text(list(args))
 
 
-## Base Variables ##
 IS_TTY = stdout.isatty()
 OS = platform.system()
 TERM = environ.get("TERM", "")
 
-## API Shortcuts ##
-# ...
 
-
-## Special Variables ##
 __all__ = [
     'get_info',
     'benchmark',

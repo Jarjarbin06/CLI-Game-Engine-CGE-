@@ -13,6 +13,8 @@ def test_attributes(
     assert hasattr(cge, "IS_TTY")
     assert hasattr(cge, "OS")
     assert hasattr(cge, "TERM")
+    assert hasattr(cge, "Sprite")
+    assert hasattr(cge, "Data")
 
 
 def test_get_info(
@@ -40,6 +42,7 @@ def test_fail(
 
     else:
         assert False
+
 
 def test_text(
         ) -> None:
