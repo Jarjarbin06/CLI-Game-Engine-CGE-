@@ -1,12 +1,11 @@
 import pytest
 
-
-from cge import Sprite
 from cge import Data
+from cge import Sprite
 
 
 def test_sprite_attributes(
-        ) -> None:
+) -> None:
     sprite = Sprite()
     assert hasattr(sprite, "sprite_id")
     assert hasattr(sprite, "name")
@@ -38,8 +37,7 @@ def test_sprite_attributes(
 
 
 def test_sprite_setColor(
-        ) -> None:
-
+) -> None:
     sprite_1 = Sprite()
     sprite_1.setColor(Data.Color(255, 0, 0))
     assert isinstance(sprite_1.color_fg, Data.Color)

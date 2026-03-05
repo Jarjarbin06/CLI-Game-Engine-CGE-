@@ -1,11 +1,10 @@
 import pytest
 
-
 import cge
 
 
 def test_attributes(
-        ) -> None:
+) -> None:
     assert hasattr(cge, "get_info")
     assert hasattr(cge, "benchmark")
     assert hasattr(cge, "fail")
@@ -18,22 +17,19 @@ def test_attributes(
 
 
 def test_get_info(
-        ) -> None:
-
+) -> None:
     assert isinstance(cge.get_info(), dict)
 
 
 def test_benchmark(
-        ) -> None:
-
+) -> None:
     result, elapsed = cge.benchmark(lambda x: x + 1, 10)
     assert result == 11
     assert round(elapsed, 0) == 0
 
 
 def test_fail(
-        ) -> None:
-
+) -> None:
     try:
         cge.fail("a fail")
 
@@ -45,7 +41,6 @@ def test_fail(
 
 
 def test_text(
-        ) -> None:
-
+) -> None:
     text = cge.text("this ", "is ", "a ", "text")
     assert str(text) == "this is a text"

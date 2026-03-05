@@ -10,14 +10,23 @@
 import platform
 from os import environ
 from sys import stdout
-from jarbin_toolkit_console.Text import Text
-from jarbin_toolkit_time import StopWatch
-from jarbin_toolkit_error import Error
-from cge.Sprite.sprite import Sprite
+
+import jarbin_toolkit_console as Console
+import jarbin_toolkit_error as Error
+import jarbin_toolkit_time as Time
+
+import cge.Data.data_check as Check
+import cge.Data.data_transform as Transform
 import cge.Data.data_classes as Data
+from cge.Error.assertion import ErrorAssertion
+from cge.Scene.scene import Scene
+from cge.Sprite.sprite import Sprite
+from cge.Window.window import Window
 
 
 def get_info() -> dict[str, str]:
+    """
+    """
     return {
         "name": "CGE",
         "description": __description__,
@@ -30,23 +39,30 @@ def get_info() -> dict[str, str]:
 
 
 def benchmark(function, *args, **kwargs):
-    sw = StopWatch(True)
+    """
+    """
+    sw = Time.StopWatch(True)
     result = function(*args, **kwargs)
     return result, sw.elapsed()
 
 
 def fail(message="an error occurred"):
-    raise Error(message)
+    """
+    """
+    raise Error.Error(message)
 
 
 def text(*args):
-    return Text(list(args))
+    """
+    """
+    return Console.Text.Text(list(args))
 
 
 IS_TTY = stdout.isatty()
 OS = platform.system()
 TERM = environ.get("TERM", "")
 
+Animation = Console.Animation
 
 __all__ = [
     'get_info',
@@ -56,8 +72,14 @@ __all__ = [
     'IS_TTY',
     'OS',
     'TERM',
+    'Window',
+    'Scene',
+    'Sprite',
     'Data',
-    'Sprite'
+    'Transform',
+    'Check',
+    'Animation',
+    'ErrorAssertion'
 ]
 __author__ = 'Nathan Jarjarbin'
 __email__ = 'nathan.amaraggi@epitech.eu'
