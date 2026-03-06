@@ -72,9 +72,6 @@ class Scene:
             return
         for sprite in self.sprites.values():
             sprite.render()
-        for layer in range(0, 10):
-            for order in range(len(self.sprites)):
-                for sprite in self.sprites.values():
-                    if sprite.z_index == layer and sprite.render_order == order:
-                        self._convert_string(str(sprite))
+        for sprite in self.sprites.values():
+            self._convert_string(str(sprite))
         self.is_dirty = False
